@@ -21,8 +21,8 @@ options = UiAutomator2Options().load_capabilities({
         "sessionName": "BStack first_test",
 
         # Set your access credentials
-        "userName": "iakivkramarenko_qiHlGs",
-        "accessKey": "FSH1mIdKHw3XsDKg95zT"
+        "userName": "bsuser_ePkJ0T",
+        "accessKey": "yVt6mmkgKhfs7o8PYzkx"
     }
 })
 

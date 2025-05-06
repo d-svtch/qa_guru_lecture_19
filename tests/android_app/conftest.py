@@ -3,8 +3,7 @@ from appium.options.android import UiAutomator2Options
 from selene import browser
 import os
 
-from selenium import webdriver
-
+import config
 
 @pytest.fixture(scope='function', autouse=True)
 def mobile_management():
@@ -24,8 +23,8 @@ def mobile_management():
             "sessionName": "BStack first_test",
 
             # Set your access credentials
-            "userName": "iakivkramarenko_qKHOLN",
-            "accessKey": "FSHAmndKHW3XsDkgm5zT"
+            "userName": config.bstack_userName,
+            "accessKey": config.bstack_accessKey
         }
     })
 
@@ -33,7 +32,7 @@ def mobile_management():
     browser.config.driver_remote_url = 'http://hub.browserstack.com/wd/hub'
     browser.config.driver_options = options
 
-    browser.config.timeout = float(os.getenv('timeout', '10.0'))
+    browser.config.timeout = float(os.getenv('timeout', '5.0'))
 
     yield
 
