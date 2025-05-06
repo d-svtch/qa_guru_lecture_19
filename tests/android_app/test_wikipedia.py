@@ -6,6 +6,7 @@ from selene import browser, have
 def test_search():
 
     with step('Type search'):
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/fragment_onboarding_skip_button')).click()
         browser.element((AppiumBy.ACCESSIBILITY_ID, "Search Wikipedia")).click()
         browser.element((AppiumBy.ID, "org.wikipedia.alpha:id/search_src_text")).type('Appium')
 
@@ -14,12 +15,16 @@ def test_search():
         results.should(have.size_greater_than(0))
         results.first.should(have.text('Appium'))
 
-def test_search_page():
+def test_page_open():
     with step('Type search'):
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/fragment_onboarding_skip_button')).click()
         browser.element((AppiumBy.ACCESSIBILITY_ID, "Search Wikipedia")).click()
         browser.element((AppiumBy.ID, "org.wikipedia.alpha:id/search_src_text")).type('Appium')
 
     with step('Open page'):
         results = browser.all((AppiumBy.ID, 'org.wikipedia.alpha:id/page_list_item_title'))
         results.first.click()
-        results.first.should(have.text('An error occurred'))
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/closeButton')).click()
+        browser.element(
+            (AppiumBy.XPATH, '//android.widget.TextView[@text="Appium"]')
+        )

@@ -10,11 +10,14 @@ def mobile_management():
     options = UiAutomator2Options().load_capabilities({
         # Specify device and os_version for testing
         # "platformName": "android",
-        "platformVersion": "9.0",
-        "deviceName": "Google Pixel 3",
+        "platformVersion": "13.0",
+        "deviceName": "Google Pixel 7 Pro",
 
         # Set URL of the application under test
-        "app": "bs://sample.app",
+        "app": config.app,
+        "appWaitActivity": "org.wikipedia.*",
+
+
 
         # Set other BrowserStack capabilities
         'bstack:options': {
@@ -32,7 +35,7 @@ def mobile_management():
     browser.config.driver_remote_url = 'http://hub.browserstack.com/wd/hub'
     browser.config.driver_options = options
 
-    browser.config.timeout = float(os.getenv('timeout', '5.0'))
+    browser.config.timeout = float(os.getenv('timeout', '10.0'))
 
     yield
 
