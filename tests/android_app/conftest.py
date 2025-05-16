@@ -5,7 +5,7 @@ import os
 
 import config
 
-@pytest.fixture(scope='function', autouse=True)
+@pytest.fixture(scope='session', autouse=True)
 def mobile_management():
     options = UiAutomator2Options().load_capabilities({
         # Specify device and os_version for testing

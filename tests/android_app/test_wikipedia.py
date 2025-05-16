@@ -16,6 +16,7 @@ def test_search():
         results.first.should(have.text('Appium'))
 
 def test_page_open():
+
     with step('Type search'):
         browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/fragment_onboarding_skip_button')).click()
         browser.element((AppiumBy.ACCESSIBILITY_ID, "Search Wikipedia")).click()
